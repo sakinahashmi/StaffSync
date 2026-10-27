@@ -1,0 +1,27 @@
+{
+  "name": "staffsync",
+  "version": "1.0.0",
+  "description": "StaffSync - Modern Human Resource Management System",
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "server:start": "npm --prefix server start",
+    "client": "npm --prefix client run dev",
+    "client:build": "npm --prefix client run build",
+    "seed": "npm --prefix server run seed",
+    "install:server": "npm --prefix server install",
+    "install:client": "npm --prefix client install",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "build": "npm --prefix client run build"
+  },
+  "keywords": [
+    "hrms",
+    "staffsync",
+    "react",
+    "express",
+    "mongodb",
+    "vite",
+    "bootstrap"
+  ],
+  "author": "StaffSync Team",
+  "license": "MIT"
+}
