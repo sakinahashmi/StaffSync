@@ -24,6 +24,7 @@ server/node_modules/
 dist/
 build/
 client/dist/
+.vercel/
 
 # Environment files
 .env

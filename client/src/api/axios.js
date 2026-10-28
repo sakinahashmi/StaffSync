@@ -1,7 +1,25 @@
 import axios from 'axios';
 
+// Helper to determine the correct API base URL
+const getBaseURL = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.trim() !== '') {
+    const trimmed = envUrl.trim().replace(/\/+$/, '');
+    // Ensure the base URL ends with /api to match the backend route definitions
+    return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+  }
+
+  // In production (Vercel full-stack deployment under a single domain), use relative /api
+  if (import.meta.env.PROD) {
+    return '/api';
+  }
+
+  // In local development default to Express backend server port
+  return 'http://localhost:5000/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: getBaseURL(),
   headers: {
     'Content-Type': 'application/json',
   },

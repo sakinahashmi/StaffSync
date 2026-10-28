@@ -44,10 +44,21 @@ const Login = () => {
     }
   };
 
-  const handleSelectDemo = (demoEmail) => {
+  const handleSelectDemo = async (demoEmail) => {
     setEmail(demoEmail);
     setPassword('Password123!');
     setError('');
+    setLoading(true);
+    try {
+      await login(demoEmail, 'Password123!');
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(
+        err.response?.data?.message || err.message || 'Authentication failed. Please verify credentials or ensure database is seeded.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
